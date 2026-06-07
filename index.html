@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akhil & Amritha | Wedding Invitation · July 5, 2026</title>
+    <title>Akhil & Amritha | Wedding Invitation Â· July 5, 2026</title>
     <meta name="description"
         content="You are cordially invited to the wedding celebration of Akhil M L and Amritha S V on July 5th, 2026 at MD Convention Centre, Mulayanthanni Devi Temple, Nellimood.">
 
@@ -13,6 +13,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Josefin+Sans:wght@300;400;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
         rel="stylesheet">
+
+    <!-- Lottie Web player -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="lottie-data.js"></script>
 
     <style>
         /* ===== RESET & ROOT ===== */
@@ -38,7 +42,7 @@
             --text-mid: #6B4E35;
             --white: #FFFFFF;
             --circ: 339.3;
-            /* 2π×54 */
+            /* 2Ï€Ã—54 */
         }
 
         html {
@@ -629,19 +633,18 @@
             }
         }
 
-        /* ===== INTRO POPUP ===== */
+        /* ===== INTRO POPUP (Lottie confetti) ===== */
         #intro-popup {
             position: fixed;
             inset: 0;
             z-index: 9999;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: #1a0e05;
+            background: transparent;
             overflow: hidden;
             cursor: pointer;
-            transition: opacity 1s ease, visibility 1s ease;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
         #intro-popup.hidden {
@@ -650,265 +653,25 @@
             pointer-events: none;
         }
 
-        /* Radial gold glow behind everything */
-        .intro-glow {
+        #lottie-confetti {
+            width: 100%;
+            height: 100%;
+            max-width: 520px;
+            max-height: 520px;
+        }
+
+        .intro-skip-hint {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(201, 168, 76, 0.18) 0%, rgba(201, 168, 76, 0.06) 45%, transparent 75%);
-            animation: intro-pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes intro-pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-
-            50% {
-                transform: scale(1.15);
-                opacity: 1;
-            }
-        }
-
-        /* Mandala SVG */
-        .intro-mandala {
-            position: absolute;
-            width: 420px;
-            height: 420px;
-            animation: intro-spin 30s linear infinite;
-            opacity: 0.18;
-        }
-
-        .intro-mandala-inner {
-            position: absolute;
-            width: 240px;
-            height: 240px;
-            animation: intro-spin-rev 18s linear infinite;
-            opacity: 0.22;
-        }
-
-        @keyframes intro-spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes intro-spin-rev {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(-360deg);
-            }
-        }
-
-        /* Central content */
-        .intro-content {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* Om / flower icon */
-        .intro-icon {
-            display: block;
-            margin: 0 auto 20px;
-            opacity: 0;
-            animation: intro-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s forwards;
-        }
-
-        @keyframes intro-pop {
-            0% {
-                opacity: 0;
-                transform: scale(0.3) rotate(-20deg);
-            }
-
-            60% {
-                opacity: 1;
-                transform: scale(1.12) rotate(4deg);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        .intro-tagline {
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 11px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: rgba(201, 168, 76, 0.7);
-            margin-bottom: 14px;
-            opacity: 0;
-            animation: fadeIn 0.4s ease 0.1s forwards;
-        }
-
-        /* Name reveal rows */
-        .intro-name-row {
-            overflow: hidden;
-            line-height: 1;
-        }
-
-        .intro-name {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(52px, 10vw, 96px);
-            background: linear-gradient(135deg, #8B6914 0%, #C9A84C 35%, #F0D060 55%, #C9A84C 75%, #8B6914 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            display: block;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: intro-slide-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        .intro-name.name-1 {
-            animation-delay: 0.2s;
-        }
-
-        .intro-name.name-2 {
-            animation-delay: 0.4s;
-        }
-
-        .intro-name.name-3 {
-            animation-delay: 0.3s;
-        }
-
-        @keyframes intro-slide-up {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .intro-ampersand {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(32px, 6vw, 58px);
-            color: var(--gold);
-            display: block;
-            opacity: 0;
-            animation: fadeIn 0.4s ease 0.3s forwards;
-            margin: -6px 0;
-        }
-
-        /* Shimmer bar */
-        .intro-shimmer {
-            width: 200px;
-            height: 2px;
-            margin: 22px auto 0;
-            background: linear-gradient(90deg, transparent, #C9A84C, #F0D060, #C9A84C, transparent);
-            background-size: 300% auto;
-            opacity: 0;
-            animation: fadeIn 0.4s ease 0.6s forwards, shimmer-move 2s linear 0.6s infinite;
-        }
-
-        @keyframes shimmer-move {
-            0% {
-                background-position: 100% center;
-            }
-
-            100% {
-                background-position: -100% center;
-            }
-        }
-
-        /* Skip hint */
-        .intro-skip {
-            position: absolute;
-            bottom: 32px;
+            bottom: 28px;
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Josefin Sans', sans-serif;
             font-size: 10px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: rgba(201, 168, 76, 0.45);
-            opacity: 0;
-            animation: fadeIn 0.5s ease 0.7s forwards;
-        }
-
-        /* Particle stars */
-        .intro-particle {
-            position: absolute;
-            border-radius: 50%;
-            background: #C9A84C;
-            opacity: 0;
-            animation: particle-burst 1.8s ease-out forwards;
-        }
-
-        @keyframes particle-burst {
-            0% {
-                opacity: 0.9;
-                transform: scale(1) translate(0, 0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(0.3) translate(var(--px), var(--py));
-            }
-        }
-
-        /* Curtain reveal lines */
-        .intro-curtain-left,
-        .intro-curtain-right {
-            position: absolute;
-            top: 0;
-            width: 50%;
-            height: 100%;
-            background: #1a0e05;
-            z-index: 3;
-            transition: transform 1.1s cubic-bezier(0.77, 0, 0.18, 1);
-        }
-
-        .intro-curtain-left {
-            left: 0;
-            transform-origin: left;
-        }
-
-        .intro-curtain-right {
-            right: 0;
-            transform-origin: right;
-        }
-
-        .intro-curtain-left.open {
-            transform: scaleX(0);
-        }
-
-        .intro-curtain-right.open {
-            transform: scaleX(0);
-        }
-
-        /* Gold border ring animation */
-        .intro-ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 1.5px solid rgba(201, 168, 76, 0.3);
-            animation: ring-expand 2s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes ring-expand {
-            0% {
-                opacity: 0.9;
-                transform: scale(0.1);
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(3.5);
-            }
+            color: rgba(139, 105, 20, 0.5);
+            animation: fadeIn 0.6s ease 0.8s both;
+            white-space: nowrap;
         }
 
         /* ===== SCROLL REVEAL ===== */
@@ -964,90 +727,17 @@
 
 <body>
 
-    <!-- ===== INTRO POPUP ===== -->
+    <!-- ===== INTRO POPUP (Lottie confetti) ===== -->
     <div id="intro-popup" onclick="dismissIntro()">
-        <!-- Curtains -->
-        <div class="intro-curtain-left" id="curtain-left"></div>
-        <div class="intro-curtain-right" id="curtain-right"></div>
 
-        <!-- Glow & Mandalas -->
-        <div class="intro-glow"></div>
-
-        <!-- Outer mandala (decorative SVG ring pattern) -->
-        <svg class="intro-mandala" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(200,200)">
-                <!-- 12 petals ring -->
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(0)" opacity="0.8" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(30)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(60)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(90)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(120)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(150)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(180)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(210)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(240)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(270)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(300)" opacity="0.7" />
-                <ellipse rx="8" ry="70" fill="#C9A84C" transform="rotate(330)" opacity="0.7" />
-                <!-- Dotted outer ring -->
-                <circle r="130" stroke="#C9A84C" stroke-width="1" stroke-dasharray="5 8" opacity="0.5" />
-                <circle r="100" stroke="#E8C97A" stroke-width="0.8" stroke-dasharray="3 12" opacity="0.4" />
-            </g>
-        </svg>
-
-        <!-- Inner rotating mandala -->
-        <svg class="intro-mandala-inner" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(120,120)">
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(0)" opacity="0.9" />
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(45)" opacity="0.8" />
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(90)" opacity="0.8" />
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(135)" opacity="0.8" />
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(180)" opacity="0.8" />
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(225)" opacity="0.8" />
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(270)" opacity="0.8" />
-                <ellipse rx="5" ry="45" fill="#F0D060" transform="rotate(315)" opacity="0.8" />
-                <circle r="60" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.6" />
-                <circle r="18" fill="#C9A84C" opacity="0.5" />
-            </g>
-        </svg>
-
-        <!-- Expanding rings (burst on load) -->
-        <div class="intro-ring" id="ring-a" style="width:80px;height:80px;animation-delay:0.2s"></div>
-        <div class="intro-ring" id="ring-b" style="width:80px;height:80px;animation-delay:0.55s"></div>
-        <div class="intro-ring" id="ring-c" style="width:80px;height:80px;animation-delay:0.9s"></div>
-
-        <!-- Main content -->
-        <div class="intro-content">
-            <!-- Om flower icon -->
-            <svg class="intro-icon" width="80" height="80" viewBox="0 0 80 80" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="40" cy="40" rx="10" ry="30" fill="#C9A84C" opacity="0.75" transform="rotate(0,40,40)" />
-                <ellipse cx="40" cy="40" rx="10" ry="30" fill="#C9A84C" opacity="0.65" transform="rotate(36,40,40)" />
-                <ellipse cx="40" cy="40" rx="10" ry="30" fill="#C9A84C" opacity="0.65" transform="rotate(72,40,40)" />
-                <ellipse cx="40" cy="40" rx="10" ry="30" fill="#C9A84C" opacity="0.55" transform="rotate(108,40,40)" />
-                <ellipse cx="40" cy="40" rx="10" ry="30" fill="#C9A84C" opacity="0.55" transform="rotate(144,40,40)" />
-                <circle cx="40" cy="40" r="9" fill="#F0D060" />
-                <circle cx="40" cy="40" r="5" fill="#8B6914" />
-            </svg>
-
-            <p class="intro-tagline">✦ A Sacred Union ✦</p>
-
-            <div class="intro-name-row">
-                <span class="intro-name name-1">Amritha S V</span>
-            </div>
-            <span class="intro-ampersand">&amp;</span>
-            <div class="intro-name-row">
-                <span class="intro-name name-2">Akhil M L</span>
-            </div>
-
-            <div class="intro-shimmer"></div>
-        </div>
-
-        <p class="intro-skip">✦ Tap anywhere to enter ✦</p>
+        <div id="lottie-confetti"></div>
+        <span class="intro-skip-hint">âœ¦ tap to enter âœ¦</span>
     </div>
+
 
     <!-- Floating petals -->
     <canvas id="petals-canvas"></canvas>
+
 
     <!-- ===== NAVIGATION ===== -->
     <nav id="main-nav">
@@ -1081,7 +771,7 @@
             </svg>
         </div>
 
-        <!-- <p class="blessing">✦ Om Ganeshaya Namah ✦</p> -->
+        <!-- <p class="blessing">âœ¦ Om Ganeshaya Namah âœ¦</p> -->
 
         <div class="hero-names">
             <span class="name-script">Amritha S V</span>
@@ -1101,7 +791,7 @@
             </svg>
         </div>
 
-        <p class="hero-date">Sunday &nbsp;·&nbsp; July 5th, 2026 &nbsp;·&nbsp; 11:00 AM</p>
+        <p class="hero-date">Sunday &nbsp;Â·&nbsp; July 5th, 2026 &nbsp;Â·&nbsp; 11:00 AM</p>
         <p class="hero-venue">MD Convention Centre, Mulayanthanni Devi Temple, Nellimood</p>
 
         <!-- Scroll hint -->
@@ -1171,19 +861,19 @@
 
         <div class="details-grid">
             <div class="detail-card reveal">
-                <span class="dc-icon">📅</span>
+                <span class="dc-icon">ðŸ“…</span>
                 <p class="dc-label">Date</p>
                 <p class="dc-value">Sunday, July 5th<br>2026</p>
                 <p class="dc-sub">An auspicious day of union</p>
             </div>
             <div class="detail-card reveal">
-                <span class="dc-icon">⏰</span>
+                <span class="dc-icon">â°</span>
                 <p class="dc-label">Time</p>
                 <p class="dc-value">11:00 AM</p>
                 <!-- <p class="dc-sub">Please arrive 30 minutes early</p> -->
             </div>
             <div class="detail-card reveal">
-                <span class="dc-icon">📍</span>
+                <span class="dc-icon">ðŸ“</span>
                 <p class="dc-label">Venue</p>
                 <p class="dc-value">MD Convention Centre</p>
                 <p class="dc-sub">Mulayanthanni Devi Temple, Nellimood</p>
@@ -1205,7 +895,7 @@
         </div>
 
         <p class="map-address reveal">
-            <span class="map-address-icon">📍</span>
+            <span class="map-address-icon">ðŸ“</span>
             MD Convention Centre, Mulayanthanni Devi Temple, Nellimood
         </p>
     </section>
@@ -1218,11 +908,11 @@
             out.</p>
 
         <div class="contact-card reveal">
-            <p class="cc-label">📞 Reach Us At</p>
+            <p class="cc-label">ðŸ“ž Reach Us At</p>
             <a href="tel:+917902551835" class="cc-num">+91 79025 51835</a>
             <div class="cc-btns">
-                <a href="tel:+917902551835" class="cc-btn btn-call">📞 Call</a>
-                <a href="https://wa.me/917902551835" target="_blank" class="cc-btn btn-wa">💬 WhatsApp</a>
+                <a href="tel:+917902551835" class="cc-btn btn-call">ðŸ“ž Call</a>
+                <a href="https://wa.me/917902551835" target="_blank" class="cc-btn btn-wa">ðŸ’¬ WhatsApp</a>
             </div>
         </div>
     </section>
@@ -1231,9 +921,9 @@
     <footer>
         <p class="ft-names">Akhil &amp; Amritha</p>
         <p class="ft-info">
-            July 5, 2026 &nbsp;·&nbsp; 11:00 AM <br>
+            July 5, 2026 &nbsp;Â·&nbsp; 11:00 AM <br>
             MD Convention Centre, Mulayanthanni Devi Temple, Nellimood <br><br>
-            Made with ❤️ for our special day
+            Made with â¤ï¸ for our special day
         </p>
     </footer>
 
@@ -1244,7 +934,7 @@
            COUNTDOWN TIMER
         ================================================ */
         const WEDDING = new Date('2026-07-05T11:00:00');
-        const CIRC = 339.3; // 2π × 54
+        const CIRC = 339.3; // 2Ï€ Ã— 54
 
         function setRing(id, value, max) {
             const el = document.getElementById(id);
@@ -1359,74 +1049,43 @@
 
 
         /* ================================================
-           INTRO POPUP
+           INTRO POPUP â€” Lottie confetti
         ================================================ */
         (function () {
             const popup = document.getElementById('intro-popup');
-            const cLeft = document.getElementById('curtain-left');
-            const cRight = document.getElementById('curtain-right');
+            document.body.style.overflow = 'hidden';
 
-            // Spawn burst particles at center
-            function spawnParticles() {
-                const cx = window.innerWidth / 2;
-                const cy = window.innerHeight / 2;
-                const count = 28;
-                for (let i = 0; i < count; i++) {
-                    const el = document.createElement('div');
-                    el.className = 'intro-particle';
-                    const angle = (i / count) * Math.PI * 2;
-                    const dist = Math.random() * 220 + 80;
-                    const size = Math.random() * 6 + 3;
-                    const delay = Math.random() * 0.4;
-                    el.style.cssText = `
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${cx}px;
-                        top: ${cy}px;
-                        --px: ${Math.cos(angle) * dist}px;
-                        --py: ${Math.sin(angle) * dist}px;
-                        animation-delay: ${delay}s;
-                        animation-duration: ${Math.random() * 0.8 + 1.2}s;
-                        opacity: ${Math.random() * 0.6 + 0.3};
-                        background: ${Math.random() > 0.5 ? '#C9A84C' : '#F0D060'};
-                    `;
-                    popup.appendChild(el);
-                    setTimeout(() => el.remove(), (delay + 2.5) * 1000);
-                }
-            }
-
-            // Auto dismiss after 4 seconds
             let dismissed = false;
             function dismissIntro() {
                 if (dismissed) return;
                 dismissed = true;
-
-                // Curtains retract
-                cLeft.classList.add('open');
-                cRight.classList.add('open');
-
-                // Fade popup
-                popup.style.transition = 'opacity 1.2s ease, visibility 1.2s ease';
                 popup.style.opacity = '0';
                 popup.style.visibility = 'hidden';
-
                 setTimeout(() => {
                     popup.style.display = 'none';
                     document.body.style.overflow = '';
-                }, 1300);
+                }, 850);
             }
 
-            // Expose to global for onclick
+            // Expose for onclick
             window.dismissIntro = dismissIntro;
 
-            // Lock scroll while popup shows
-            document.body.style.overflow = 'hidden';
+            // Init Lottie animation (data loaded from lottie-data.js to avoid XHR block on file:// URLs)
+            const anim = lottie.loadAnimation({
+                container: document.getElementById('lottie-confetti'),
+                renderer: 'svg',
+                loop: false,
+                autoplay: true,
+                animationData: lottieData
+            });
 
-            // Burst particles immediately
-            setTimeout(spawnParticles, 100);
+            // Auto-dismiss when animation completes
+            anim.addEventListener('complete', function () {
+                setTimeout(dismissIntro, 200);
+            });
 
-            // Auto dismiss after 2s
-            setTimeout(dismissIntro, 2000);
+            // Safety fallback: dismiss after 5s regardless
+            setTimeout(dismissIntro, 5000);
         })();
     </script>
 </body>
